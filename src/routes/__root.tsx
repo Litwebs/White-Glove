@@ -77,11 +77,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "White Glove Courier — Premium Courier & Removal Services UK" },
       { name: "description", content: "Reliable courier and removal services across London and the UK. Same-day delivery, removals, and business logistics, delivered with care." },
       { name: "author", content: "White Glove Courier" },
-      { property: "og:title", content: "White Glove Courier" },
-      { property: "og:description", content: "Professional courier and removal services delivered with care." },
+      { property: "og:title", content: "White Glove Courier — Premium Courier & Removal Services UK" },
+      { property: "og:description", content: "Reliable courier and removal services across London and the UK. Same-day delivery, removals, and business logistics, delivered with care." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "White Glove Courier — Premium Courier & Removal Services UK" },
+      { name: "twitter:description", content: "Reliable courier and removal services across London and the UK. Same-day delivery, removals, and business logistics, delivered with care." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b488835c-e95c-4685-bd2d-1aabada35fee/id-preview-130a1221--92cdcbe0-5224-4927-a9ec-694af3dc9088.lovable.app-1779125787781.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b488835c-e95c-4685-bd2d-1aabada35fee/id-preview-130a1221--92cdcbe0-5224-4927-a9ec-694af3dc9088.lovable.app-1779125787781.png" },
     ],
     links: [
       {
