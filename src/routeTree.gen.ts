@@ -9,14 +9,26 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RequestQuoteRouteImport } from './routes/request-quote'
 import { Route as RemovalServiceRouteImport } from './routes/removal-service'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BookAndPayRouteImport } from './routes/book-and-pay'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const RequestQuoteRoute = RequestQuoteRouteImport.update({
+  id: '/request-quote',
+  path: '/request-quote',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RemovalServiceRoute = RemovalServiceRouteImport.update({
   id: '/removal-service',
   path: '/removal-service',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BookAndPayRoute = BookAndPayRouteImport.update({
@@ -39,43 +51,84 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/book-and-pay': typeof BookAndPayRoute
+  '/contact': typeof ContactRoute
   '/removal-service': typeof RemovalServiceRoute
+  '/request-quote': typeof RequestQuoteRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/book-and-pay': typeof BookAndPayRoute
+  '/contact': typeof ContactRoute
   '/removal-service': typeof RemovalServiceRoute
+  '/request-quote': typeof RequestQuoteRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/book-and-pay': typeof BookAndPayRoute
+  '/contact': typeof ContactRoute
   '/removal-service': typeof RemovalServiceRoute
+  '/request-quote': typeof RequestQuoteRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/book-and-pay' | '/removal-service'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/book-and-pay'
+    | '/contact'
+    | '/removal-service'
+    | '/request-quote'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/book-and-pay' | '/removal-service'
-  id: '__root__' | '/' | '/about' | '/book-and-pay' | '/removal-service'
+  to:
+    | '/'
+    | '/about'
+    | '/book-and-pay'
+    | '/contact'
+    | '/removal-service'
+    | '/request-quote'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/book-and-pay'
+    | '/contact'
+    | '/removal-service'
+    | '/request-quote'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   BookAndPayRoute: typeof BookAndPayRoute
+  ContactRoute: typeof ContactRoute
   RemovalServiceRoute: typeof RemovalServiceRoute
+  RequestQuoteRoute: typeof RequestQuoteRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/request-quote': {
+      id: '/request-quote'
+      path: '/request-quote'
+      fullPath: '/request-quote'
+      preLoaderRoute: typeof RequestQuoteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/removal-service': {
       id: '/removal-service'
       path: '/removal-service'
       fullPath: '/removal-service'
       preLoaderRoute: typeof RemovalServiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/book-and-pay': {
@@ -106,7 +159,9 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   BookAndPayRoute: BookAndPayRoute,
+  ContactRoute: ContactRoute,
   RemovalServiceRoute: RemovalServiceRoute,
+  RequestQuoteRoute: RequestQuoteRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
