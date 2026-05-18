@@ -17,9 +17,7 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link to="/" className="flex items-center gap-2">
-          <span className="font-display text-xl font-semibold tracking-tight text-foreground">
-            White Glove <span className="text-[oklch(0.78_0.10_85)]">Courier</span>
-          </span>
+          <img src="/logo.png" alt="White Glove Courier" className="h-9 w-auto" />
         </Link>
         <nav className="hidden items-center gap-8 lg:flex">
           {links.map((l) => (

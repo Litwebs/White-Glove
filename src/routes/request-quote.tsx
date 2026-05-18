@@ -5,7 +5,11 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
-  Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
 } from "@/components/ui/select";
 import { CheckCircle2 } from "lucide-react";
 
@@ -13,7 +17,11 @@ export const Route = createFileRoute("/request-quote")({
   head: () => ({
     meta: [
       { title: "Request a Quote — White Glove Courier" },
-      { name: "description", content: "Request a tailored quote for courier, removal, furniture delivery or office moves across the UK." },
+      {
+        name: "description",
+        content:
+          "Request a tailored quote for courier, removal, furniture delivery or office moves across the UK.",
+      },
     ],
   }),
   component: QuotePage,
@@ -21,6 +29,19 @@ export const Route = createFileRoute("/request-quote")({
 
 function QuotePage() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setLoading(true);
+    await fetch("https://formsubmit.co/ajax/Collinsstacy3131@gmail.com", {
+      method: "POST",
+      body: new FormData(e.currentTarget),
+    });
+    setLoading(false);
+    setSubmitted(true);
+  }
+
   return (
     <div>
       <PageHero
@@ -33,30 +54,46 @@ function QuotePage() {
           <div className="rounded-xl border border-border bg-card p-10 text-center">
             <CheckCircle2 className="mx-auto h-10 w-10 text-[oklch(0.55_0.15_150)]" />
             <h2 className="mt-4 text-2xl font-semibold">Thank you</h2>
-            <p className="mt-3 text-muted-foreground">We've received your request and will respond as soon as possible with a tailored quote.</p>
+            <p className="mt-3 text-muted-foreground">
+              We've received your request and will respond as soon as possible with a tailored
+              quote.
+            </p>
           </div>
         ) : (
           <form
             className="space-y-6 rounded-xl border border-border bg-card p-7 md:p-10"
-            onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
+            onSubmit={handleSubmit}
           >
+            <input type="hidden" name="_subject" value="New Quote Request — White Glove Courier" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
             <div className="grid gap-5 md:grid-cols-2">
               <div>
-                <Label htmlFor="fname" className="mb-2 block text-sm">Full name</Label>
-                <Input id="fname" required />
+                <Label htmlFor="fname" className="mb-2 block text-sm">
+                  Full name
+                </Label>
+                <Input id="fname" name="name" required />
               </div>
               <div>
-                <Label htmlFor="email" className="mb-2 block text-sm">Email address</Label>
-                <Input id="email" type="email" required />
+                <Label htmlFor="email" className="mb-2 block text-sm">
+                  Email address
+                </Label>
+                <Input id="email" name="email" type="email" required />
               </div>
               <div>
-                <Label htmlFor="phone" className="mb-2 block text-sm">Phone number</Label>
-                <Input id="phone" type="tel" required />
+                <Label htmlFor="phone" className="mb-2 block text-sm">
+                  Phone number
+                </Label>
+                <Input id="phone" name="phone" type="tel" required />
               </div>
               <div>
-                <Label htmlFor="service" className="mb-2 block text-sm">Service required</Label>
-                <Select>
-                  <SelectTrigger id="service"><SelectValue placeholder="Select a service" /></SelectTrigger>
+                <Label htmlFor="service" className="mb-2 block text-sm">
+                  Service required
+                </Label>
+                <Select name="service">
+                  <SelectTrigger id="service">
+                    <SelectValue placeholder="Select a service" />
+                  </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="courier">Courier service</SelectItem>
                     <SelectItem value="removal">Removal service</SelectItem>
@@ -67,29 +104,55 @@ function QuotePage() {
                 </Select>
               </div>
               <div>
-                <Label htmlFor="cpost" className="mb-2 block text-sm">Collection postcode</Label>
-                <Input id="cpost" required />
+                <Label htmlFor="cpost" className="mb-2 block text-sm">
+                  Collection postcode
+                </Label>
+                <Input id="cpost" name="collection_postcode" required />
               </div>
               <div>
-                <Label htmlFor="dpost" className="mb-2 block text-sm">Delivery postcode</Label>
-                <Input id="dpost" required />
+                <Label htmlFor="dpost" className="mb-2 block text-sm">
+                  Delivery postcode
+                </Label>
+                <Input id="dpost" name="delivery_postcode" required />
               </div>
               <div>
-                <Label htmlFor="date" className="mb-2 block text-sm">Preferred date</Label>
-                <Input id="date" type="date" />
+                <Label htmlFor="date" className="mb-2 block text-sm">
+                  Preferred date
+                </Label>
+                <Input id="date" name="preferred_date" type="date" />
               </div>
             </div>
             <div>
-              <Label htmlFor="items" className="mb-2 block text-sm">Item details</Label>
-              <Textarea id="items" rows={3} placeholder="What needs collecting and delivering?" />
+              <Label htmlFor="items" className="mb-2 block text-sm">
+                Item details
+              </Label>
+              <Textarea
+                id="items"
+                name="item_details"
+                rows={3}
+                placeholder="What needs collecting and delivering?"
+              />
             </div>
             <div>
-              <Label htmlFor="notes" className="mb-2 block text-sm">Additional notes</Label>
-              <Textarea id="notes" rows={3} placeholder="Access details, timing, anything else we should know" />
+              <Label htmlFor="notes" className="mb-2 block text-sm">
+                Additional notes
+              </Label>
+              <Textarea
+                id="notes"
+                name="additional_notes"
+                rows={3}
+                placeholder="Access details, timing, anything else we should know"
+              />
             </div>
-            <p className="text-sm text-muted-foreground">We will respond as soon as possible with a tailored quote.</p>
-            <button type="submit" className="inline-flex h-12 w-full items-center justify-center rounded-md bg-foreground px-6 text-sm font-semibold text-background hover:bg-foreground/90 md:w-auto">
-              Submit Quote Request
+            <p className="text-sm text-muted-foreground">
+              We will respond as soon as possible with a tailored quote.
+            </p>
+            <button
+              type="submit"
+              disabled={loading}
+              className="inline-flex h-12 w-full items-center justify-center rounded-md bg-foreground px-6 text-sm font-semibold text-background hover:bg-foreground/90 disabled:opacity-60 md:w-auto"
+            >
+              {loading ? "Sending…" : "Submit Quote Request"}
             </button>
           </form>
         )}

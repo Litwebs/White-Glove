@@ -2,14 +2,17 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
 
-// Replace this WhatsApp number with the real business number later.
-const WHATSAPP_URL = "https://wa.me/00000000000";
+const WHATSAPP_URL = "https://wa.me/447547720911";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact — White Glove Courier" },
-      { name: "description", content: "Contact White Glove Courier on WhatsApp for bookings, quotes and general enquiries." },
+      {
+        name: "description",
+        content:
+          "Contact White Glove Courier on WhatsApp for bookings, quotes and general enquiries.",
+      },
     ],
   }),
   component: ContactPage,
@@ -28,7 +31,8 @@ function ContactPage() {
           <MessageCircle className="mx-auto h-12 w-12 text-[#25D366]" />
           <h2 className="mt-5 font-display text-3xl font-semibold">Message Us on WhatsApp</h2>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-            The fastest way to reach our team. We'll respond promptly with a tailored quote or confirm your booking.
+            The fastest way to reach our team. We'll respond promptly with a tailored quote or
+            confirm your booking.
           </p>
           <a
             href={WHATSAPP_URL}
@@ -45,12 +49,25 @@ function ContactPage() {
           <div className="rounded-xl border border-border bg-card p-6">
             <Mail className="h-6 w-6 text-[oklch(0.45_0.10_85)]" />
             <div className="mt-4 text-sm font-medium text-muted-foreground">Email</div>
-            <div className="mt-1 font-medium">info@whiteglovecourier.co.uk</div>
+            <div className="mt-1 font-medium">
+              <a href="mailto:Collinsstacy3131@gmail.com" className="hover:underline">
+                Collinsstacy3131@gmail.com
+              </a>
+            </div>
           </div>
           <div className="rounded-xl border border-border bg-card p-6">
             <Phone className="h-6 w-6 text-[oklch(0.45_0.10_85)]" />
             <div className="mt-4 text-sm font-medium text-muted-foreground">Phone</div>
-            <div className="mt-1 font-medium">WhatsApp number coming soon</div>
+            <div className="mt-1 font-medium">
+              <a
+                href="https://wa.me/447547720911"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:underline"
+              >
+                07547 720911
+              </a>
+            </div>
           </div>
           <div className="rounded-xl border border-border bg-card p-6">
             <MapPin className="h-6 w-6 text-[oklch(0.45_0.10_85)]" />
