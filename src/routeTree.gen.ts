@@ -9,8 +9,44 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as RequestQuoteRouteImport } from './routes/request-quote'
+import { Route as RemovalServiceRouteImport } from './routes/removal-service'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as BookAndPayRouteImport } from './routes/book-and-pay'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RequestQuoteRoute = RequestQuoteRouteImport.update({
+  id: '/request-quote',
+  path: '/request-quote',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RemovalServiceRoute = RemovalServiceRouteImport.update({
+  id: '/removal-service',
+  path: '/removal-service',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookAndPayRoute = BookAndPayRouteImport.update({
+  id: '/book-and-pay',
+  path: '/book-and-pay',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +55,116 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/book-and-pay': typeof BookAndPayRoute
+  '/contact': typeof ContactRoute
+  '/removal-service': typeof RemovalServiceRoute
+  '/request-quote': typeof RequestQuoteRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/book-and-pay': typeof BookAndPayRoute
+  '/contact': typeof ContactRoute
+  '/removal-service': typeof RemovalServiceRoute
+  '/request-quote': typeof RequestQuoteRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/book-and-pay': typeof BookAndPayRoute
+  '/contact': typeof ContactRoute
+  '/removal-service': typeof RemovalServiceRoute
+  '/request-quote': typeof RequestQuoteRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/book-and-pay'
+    | '/contact'
+    | '/removal-service'
+    | '/request-quote'
+    | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/book-and-pay'
+    | '/contact'
+    | '/removal-service'
+    | '/request-quote'
+    | '/sitemap.xml'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/book-and-pay'
+    | '/contact'
+    | '/removal-service'
+    | '/request-quote'
+    | '/sitemap.xml'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  BookAndPayRoute: typeof BookAndPayRoute
+  ContactRoute: typeof ContactRoute
+  RemovalServiceRoute: typeof RemovalServiceRoute
+  RequestQuoteRoute: typeof RequestQuoteRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/request-quote': {
+      id: '/request-quote'
+      path: '/request-quote'
+      fullPath: '/request-quote'
+      preLoaderRoute: typeof RequestQuoteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/removal-service': {
+      id: '/removal-service'
+      path: '/removal-service'
+      fullPath: '/removal-service'
+      preLoaderRoute: typeof RemovalServiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/book-and-pay': {
+      id: '/book-and-pay'
+      path: '/book-and-pay'
+      fullPath: '/book-and-pay'
+      preLoaderRoute: typeof BookAndPayRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +177,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  BookAndPayRoute: BookAndPayRoute,
+  ContactRoute: ContactRoute,
+  RemovalServiceRoute: RemovalServiceRoute,
+  RequestQuoteRoute: RequestQuoteRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
