@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RemovalServiceRouteImport } from './routes/removal-service'
+import { Route as BookAndPayRouteImport } from './routes/book-and-pay'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
 const RemovalServiceRoute = RemovalServiceRouteImport.update({
   id: '/removal-service',
   path: '/removal-service',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookAndPayRoute = BookAndPayRouteImport.update({
+  id: '/book-and-pay',
+  path: '/book-and-pay',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -32,30 +38,34 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/book-and-pay': typeof BookAndPayRoute
   '/removal-service': typeof RemovalServiceRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/book-and-pay': typeof BookAndPayRoute
   '/removal-service': typeof RemovalServiceRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/book-and-pay': typeof BookAndPayRoute
   '/removal-service': typeof RemovalServiceRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/removal-service'
+  fullPaths: '/' | '/about' | '/book-and-pay' | '/removal-service'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/removal-service'
-  id: '__root__' | '/' | '/about' | '/removal-service'
+  to: '/' | '/about' | '/book-and-pay' | '/removal-service'
+  id: '__root__' | '/' | '/about' | '/book-and-pay' | '/removal-service'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  BookAndPayRoute: typeof BookAndPayRoute
   RemovalServiceRoute: typeof RemovalServiceRoute
 }
 
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/removal-service'
       fullPath: '/removal-service'
       preLoaderRoute: typeof RemovalServiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/book-and-pay': {
+      id: '/book-and-pay'
+      path: '/book-and-pay'
+      fullPath: '/book-and-pay'
+      preLoaderRoute: typeof BookAndPayRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  BookAndPayRoute: BookAndPayRoute,
   RemovalServiceRoute: RemovalServiceRoute,
 }
 export const routeTree = rootRouteImport
