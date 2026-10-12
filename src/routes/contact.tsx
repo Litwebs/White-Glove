@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
 
-const WHATSAPP_URL = "https://wa.me/447547720911";
+const WHATSAPP_URL = "https://wa.me/447518179173";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -50,8 +50,8 @@ function ContactPage() {
             <Mail className="h-6 w-6 text-[oklch(0.45_0.10_85)]" />
             <div className="mt-4 text-sm font-medium text-muted-foreground">Email</div>
             <div className="mt-1 font-medium">
-              <a href="mailto:Collinsstacy3131@gmail.com" className="hover:underline">
-                Collinsstacy3131@gmail.com
+              <a href="mailto:whiteglovecourieruk@gmail.com" className="hover:underline">
+                whiteglovecourieruk@gmail.com
               </a>
             </div>
           </div>
@@ -60,12 +60,12 @@ function ContactPage() {
             <div className="mt-4 text-sm font-medium text-muted-foreground">Phone</div>
             <div className="mt-1 font-medium">
               <a
-                href="https://wa.me/447547720911"
+                href="https://wa.me/447518179173"
                 target="_blank"
                 rel="noreferrer"
                 className="hover:underline"
               >
-                07547 720911
+                07518 179 173
               </a>
             </div>
           </div>

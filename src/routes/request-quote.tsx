@@ -34,7 +34,7 @@ function QuotePage() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
-    await fetch("https://formsubmit.co/ajax/Collinsstacy3131@gmail.com", {
+    await fetch("https://formsubmit.co/ajax/whiteglovecourieruk@gmail.com", {
       method: "POST",
       body: new FormData(e.currentTarget),
     });

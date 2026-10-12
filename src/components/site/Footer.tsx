@@ -65,17 +65,17 @@ export function Footer() {
           <ul className="space-y-2 text-sm">
             <li>
               <a
-                href="https://wa.me/447547720911"
+                href="https://wa.me/447518179173"
                 target="_blank"
                 rel="noreferrer"
                 className="hover:text-white"
               >
-                WhatsApp: 07547 720911
+                WhatsApp: 07518 179 173
               </a>
             </li>
             <li>
-              <a href="mailto:Collinsstacy3131@gmail.com" className="hover:text-white">
-                Collinsstacy3131@gmail.com
+              <a href="mailto:whiteglovecourieruk@gmail.com" className="hover:text-white">
+                whiteglovecourieruk@gmail.com
               </a>
             </li>
             <li>London, United Kingdom</li>

@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
-const WHATSAPP_URL = "https://wa.me/447547720911";
+const WHATSAPP_URL = "https://wa.me/447518179173";
 
 export const Route = createFileRoute("/book-and-pay")({
   head: () => ({
@@ -94,7 +94,7 @@ function BookPage() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
-    await fetch("https://formsubmit.co/ajax/Collinsstacy3131@gmail.com", {
+    await fetch("https://formsubmit.co/ajax/whiteglovecourieruk@gmail.com", {
       method: "POST",
       body: new FormData(e.currentTarget),
     });
